@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MessageBoard.Models;
+using System.Data.SqlClient.SqlConnection;
 
 namespace MessageBoard.Controllers
 {
@@ -15,6 +16,7 @@ namespace MessageBoard.Controllers
   public class MessagesController : ControllerBase
   {
     private readonly MessageBoardContext _db;
+    private readonly SqlConnection _connectionString;
 
     public MessagesController(MessageBoardContext db)
     {
@@ -118,6 +120,8 @@ namespace MessageBoard.Controllers
 
       return NoContent();
     }
+    
+    
 
     private bool MessageExists(int id)
     {
