@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessageBoard.Migrations
 {
     [DbContext(typeof(MessageBoardContext))]
-    [Migration("20220816185458_Initial")]
+    [Migration("20220816210709_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

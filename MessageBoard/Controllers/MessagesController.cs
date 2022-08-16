@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MessageBoard.Models;
-using System.Data.SqlClient.SqlConnection;
 
 namespace MessageBoard.Controllers
 {
@@ -16,7 +15,6 @@ namespace MessageBoard.Controllers
   public class MessagesController : ControllerBase
   {
     private readonly MessageBoardContext _db;
-    private readonly SqlConnection _connectionString;
 
     public MessagesController(MessageBoardContext db)
     {
@@ -25,7 +23,7 @@ namespace MessageBoard.Controllers
 
     // GET: api/MessageBoards
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Message>>> Get(string name, string comment, string user)
+    public async Task<ActionResult<IEnumerable<Message>>> Get([FromQuery]string name, string comment, string user)
     {
       var query = _db.Messages.AsQueryable();
       
@@ -94,7 +92,7 @@ namespace MessageBoard.Controllers
 
     // POST: api/Message
     [HttpPost]
-    public async Task<ActionResult<Message>> Post(Message message)
+    public async Task<ActionResult<Message>> Post([FromBody]Message message)
     {
       DateTime date1 = DateTime.Now;
       var longDateValue = date1.ToLongDateString();
