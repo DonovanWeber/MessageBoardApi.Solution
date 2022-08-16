@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace MessageBoard.Controllers
     public async Task<ActionResult<IEnumerable<Message>>> Get(string name, string comment, string user)
     {
       var query = _db.Messages.AsQueryable();
-
+      
       if (name != null)
       {
         query = query.Where(entry => entry.Name == name);
@@ -93,6 +94,9 @@ namespace MessageBoard.Controllers
     [HttpPost]
     public async Task<ActionResult<Message>> Post(Message message)
     {
+      DateTime date1 = DateTime.Now;
+      var longDateValue = date1.ToLongDateString();
+      message.PostDate = longDateValue;
       _db.Messages.Add(message);
       await _db.SaveChangesAsync();
 

@@ -38,6 +38,8 @@ namespace MessageBoard
 
             app.UseRouting();
 
+            // app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

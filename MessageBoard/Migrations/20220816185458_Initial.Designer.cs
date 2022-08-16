@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessageBoard.Migrations
 {
     [DbContext(typeof(MessageBoardContext))]
-    [Migration("20220815230024_Initial")]
+    [Migration("20220816185458_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,11 +30,16 @@ namespace MessageBoard.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PostDate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("User")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4");
 
                     b.HasKey("MessageId");
 
@@ -46,6 +51,7 @@ namespace MessageBoard.Migrations
                             MessageId = 1,
                             Comment = "Burritos!!",
                             Name = "Lunch Crew",
+                            PostDate = "16 August 2022",
                             User = "Employee_03"
                         },
                         new
@@ -53,6 +59,7 @@ namespace MessageBoard.Migrations
                             MessageId = 2,
                             Comment = "VAR sucks",
                             Name = "Soccer",
+                            PostDate = "16 August 2022",
                             User = "Employee_02"
                         },
                         new
@@ -60,6 +67,7 @@ namespace MessageBoard.Migrations
                             MessageId = 3,
                             Comment = "Play OW2!!",
                             Name = "Gamers",
+                            PostDate = "16 August 2022",
                             User = "Employee_03"
                         });
                 });

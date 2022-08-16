@@ -13,9 +13,10 @@ namespace MessageBoard.Migrations
                 {
                     MessageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    Name = table.Column<string>(type: "varchar(30) CHARACTER SET utf8mb4", maxLength: 30, nullable: false),
                     Comment = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
-                    User = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false)
+                    User = table.Column<string>(type: "varchar(30) CHARACTER SET utf8mb4", maxLength: 30, nullable: false),
+                    PostDate = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -24,18 +25,18 @@ namespace MessageBoard.Migrations
 
             migrationBuilder.InsertData(
                 table: "Messages",
-                columns: new[] { "MessageId", "Comment", "Name", "User" },
-                values: new object[] { 1, "Burritos!!", "Lunch Crew", "Employee_03" });
+                columns: new[] { "MessageId", "Comment", "Name", "PostDate", "User" },
+                values: new object[] { 1, "Burritos!!", "Lunch Crew", "16 August 2022", "Employee_03" });
 
             migrationBuilder.InsertData(
                 table: "Messages",
-                columns: new[] { "MessageId", "Comment", "Name", "User" },
-                values: new object[] { 2, "VAR sucks", "Soccer", "Employee_02" });
+                columns: new[] { "MessageId", "Comment", "Name", "PostDate", "User" },
+                values: new object[] { 2, "VAR sucks", "Soccer", "16 August 2022", "Employee_02" });
 
             migrationBuilder.InsertData(
                 table: "Messages",
-                columns: new[] { "MessageId", "Comment", "Name", "User" },
-                values: new object[] { 3, "Play OW2!!", "Gamers", "Employee_03" });
+                columns: new[] { "MessageId", "Comment", "Name", "PostDate", "User" },
+                values: new object[] { 3, "Play OW2!!", "Gamers", "16 August 2022", "Employee_03" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
