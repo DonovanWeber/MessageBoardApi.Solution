@@ -27,7 +27,7 @@ namespace MessageBoard
             services.AddControllers();
 
             services.AddMvc();
-
+            //AddSwaggerGen
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Message Board API", Version = "v1", Description ="Message Board Management API", 
